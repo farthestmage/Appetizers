@@ -9,12 +9,11 @@ import SwiftUI
 
 struct DetailView: View {
     let appetizers: Appetizer
-    
+    @Binding var dismissx: Bool
     
     var body: some View {
         VStack(){
-            Image ("asian-flank-steak")
-                .resizable()
+            AppetizerremoteImage(urlString: appetizers.imageURL)
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 300,height: 225)
             VStack{
@@ -26,31 +25,15 @@ struct DetailView: View {
                     .multilineTextAlignment(.center)
                     .font(.body)
                     .padding()
-                HStack(spacing: 30){
-                    VStack{
-                        Text("Calories")
-                        Text("\(appetizers.calories)")
-                    }
-                    VStack{
-                        Text("Carbs")
-                        Text("\(appetizers.carbs) g")
-                    }
-                    VStack{
-                        Text("Calories")
-                        Text("\(appetizers.protein) g")
-                    }
+                HStack(spacing: 40){
+                    Nutrients(appetizers: appetizers)
                 }
             }
             Spacer()
             
             Button(action: {}) {
-                Text("$ \(appetizers.price,specifier: "%.2f") - Add To Order")
-                      .padding()
-                      .foregroundColor(.white)
-                      .background(.mint)
-                      .cornerRadius(10)
-                      .bold()
-                      .font(.title2)
+                APButton(appetizers: appetizers)
+                    
             }.padding(.bottom,30)
             
         }
@@ -58,9 +41,15 @@ struct DetailView: View {
         .background(Color(.systemBackground))
         .cornerRadius(12)
         .shadow(radius: 40)
+        .overlay(alignment: .topTrailing){
+            Button(action:{ dismissx.toggle() }){
+                Dismiss()
+            }
+            
+        }
     }
 }
 
 #Preview {
-    DetailView(appetizers: MockData.sampleAppetizer)
+    DetailView(appetizers: MockData.sampleAppetizer, dismissx: .constant(true))
 }
