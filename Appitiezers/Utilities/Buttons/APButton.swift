@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct APButton: View {
-    var appetizers: Appetizer
+    var title: LocalizedStringKey
     var body: some View {
-        Text("$ \(appetizers.price,specifier: "%.2f") - Add To Order")
+        Text(title)
             .frame(width: 260,height: 50)
             .background(.brandPrimary)
             .font(.title3)

@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import UIKit
+import Foundation
 
 struct DetailView: View {
     let appetizers: Appetizer
@@ -32,7 +34,7 @@ struct DetailView: View {
             Spacer()
             
             Button(action: {}) {
-                APButton(appetizers: appetizers)
+                APButton(title: "$ \(appetizers.price, specifier: "%.2f") - Add To Order")
                     
             }.padding(.bottom,30)
             

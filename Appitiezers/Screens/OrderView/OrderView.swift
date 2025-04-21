@@ -8,9 +8,29 @@
 import SwiftUI
 
 struct OrderView: View {
+    
+    @State private var orderItems = MockData.OrderItems
+    
     var body: some View {
         NavigationView(){
-            Text("OrderView")
+            VStack {
+                List {
+                    ForEach(orderItems) {
+                        OrderItem in
+                        AppetizerListCell(appetizer: OrderItem)
+                    }
+                    .onDelete(perform: {IndexSet in
+                        orderItems.remove(atOffsets: IndexSet)
+                                })
+                
+                }
+                .listStyle(.plain)
+                Button(action:{}){
+                    APButton(title: "Hello")
+                       
+                }
+                .padding(.bottom,25)
+            }
                 .navigationTitle("Orders")
         }
     }
