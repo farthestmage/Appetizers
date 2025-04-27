@@ -10,12 +10,11 @@
 - **Nutritional Insights**: View detailed nutritional information for each appetizer.
 - **Dark Mode Support**: Enjoy a seamless experience in both light and dark modes.
 - **Responsive Design**: Optimized for iPhones and iPads.
-
 ---
 
 ## Screenshots
 
-![Appetizers Screenshot 1](path/to/screenshot1.png)
-![Appetizers Screenshot 2](path/to/screenshot2.png)
+![Appetizers Screenshot 1](./screenshots/APPE1.png)
+![Appetizers Screenshot 2](./screenshots/APPE2.png)
 ---
 
