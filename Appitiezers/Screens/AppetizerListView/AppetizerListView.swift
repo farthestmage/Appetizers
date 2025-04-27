@@ -16,17 +16,22 @@ struct AppetizerListView: View {
                 List(viewmodel.appetizers){
                     appetizer in
                     AppetizerListCell(appetizer: appetizer)
+                        .listRowSeparator(.hidden)
                         .onTapGesture {
                             viewmodel.isshowingdetailview = true
                             viewmodel.selectedappetizer = appetizer
                         }
                     
                 }
+                .listStyle(.plain)
                 .navigationTitle("Appetizer")
                 .disabled(viewmodel.isshowingdetailview)
                 
             }
-            .onAppear(){
+//            .onAppear(){
+//                viewmodel.getAppetizer()
+//            }
+            .task {
                 viewmodel.getAppetizer()
             }
             .blur(radius: viewmodel.isshowingdetailview ? 20 : 0)

@@ -10,6 +10,9 @@ import UIKit
 import Foundation
 
 struct DetailView: View {
+    
+    @EnvironmentObject var order: Order
+    
     let appetizers: Appetizer
     @Binding var dismissx: Bool
     
@@ -33,18 +36,24 @@ struct DetailView: View {
             }
             Spacer()
             
-            Button(action: {}) {
-                APButton(title: "$ \(appetizers.price, specifier: "%.2f") - Add To Order")
+            Button(action: {order.add(appetizers)
+                            dismissx = false}) {
+               // APButton(title: "$ \(appetizers.price, specifier: "%.2f") - Add To Order")
+                Text("$ \(appetizers.price, specifier: "%.2f") - Add To Order")
                     
-            }.padding(.bottom,30)
-            
+            }
+                            .modifier(StandardButtonStyle())
+//                            .buttonStyle(.bordered)
+//                            .tint(.brandPrimary)
+//                            .controlSize(.large)
+                            .padding(.bottom,30)
         }
         .frame(width: 300,height: 525)
         .background(Color(.systemBackground))
         .cornerRadius(12)
         .shadow(radius: 40)
         .overlay(alignment: .topTrailing){
-            Button(action:{ dismissx.toggle() }){
+            Button(action:{ dismissx = false }){
                 Dismiss()
             }
             

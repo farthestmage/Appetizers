@@ -42,7 +42,7 @@ final class AccountViewModel: ObservableObject {
         }
     }
     func retriveUser() {
-        guard let userdata = userdata else { return }
+        guard let userdata else { return }
         do {
             user = try JSONDecoder().decode(User.self, from: userdata)
         }
