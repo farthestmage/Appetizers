@@ -12,9 +12,3 @@
 - **Responsive Design**: Optimized for iPhones and iPads.
 ---
 
-## Screenshots
-
-![Appetizers Screenshot 1](./screenshots/APPE1.png)
-![Appetizers Screenshot 2](./screenshots/APPE2.png)
----
-
